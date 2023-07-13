@@ -24,15 +24,23 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 20.10.11
-          docker_layer_caching: true
+      # - setup_remote_docker:
+      #     version: 20.10.11
+      #     docker_layer_caching: true
+      - run:
+          name: "show docker info"
+          command: |
+            echo ${DOCKER_PWD}
+            echo ${DOCKER_USER_NAME}
+
       - run:
           name: "Build docker"
           command: docker build -t hbc08/bch:v222 .
       - run:
           name: "push docker"
-          command: docker push hbc08/bch:v222
+          command: |
+            docker login -u ${DOCKER_USER_NAME} -p ${DOCKER_PWD}
+            docker push hbc08/bch:v222
 
 
 # Orchestrate jobs using workflows
