@@ -39,7 +39,7 @@ jobs:
       - run:
           name: "push docker"
           command: |
-            docker login -u ${DOCKER_USER_NAME} -p ${DOCKER_PWD}
+            echo "$DOCKER_PWD" | docker login -u "$DOCKER_USER_NAME" --password-stdin
             docker push hbc08/bch:v222
 
 
