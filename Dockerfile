@@ -2,7 +2,7 @@ FROM python:3.11.4
 WORKDIR /myapp
 COPY . .
 RUN pip install -r requirements.txt
-ENV MONGODB_URL=mongodb://0.0.0.0:27017/ \
+ENV MONGODB_URL=mongodb://mongouser:mongopassword@localhost:27017/ \
     HOST=0.0.0.0 \
     IS_DEBUG_MODE=false
 

@@ -74,6 +74,7 @@ def delete_todo():
 if __name__ == '__main__':
     print("locahost: ", host)
     print("port: ", port)
+    print("mongodb url: ", mongodb_url)
     app.run(host=host, port=port, debug=is_debug_mode)
 
 # Close the MongoDB connection

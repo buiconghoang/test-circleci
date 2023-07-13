@@ -13,9 +13,17 @@ services:
   mongoTodoListdb:
     restart: always
     image: mongo:6-jammy
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongouser
+      - MONGO_INITDB_ROOT_PASSWORD=mongopassword
     ports:
       - '27017:27017'
     volumes:
-      - dbdata6:/data/db
+      - mongo-todo-list-data:/data/db
 volumes:
-  dbdata6:
+  mongo-todo-list-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/mfv-hn-computer-0015/docker/local_mount/mongo-todo-list-data

@@ -18,9 +18,24 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
+
+  build-push-docker-image:
+    docker:
+      - image: cimg/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: "Build docker"
+          command: make build-image
+      - run:
+          name: "push docker"
+          command: make push-image
+
+
+
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  push-image-workflow:
     jobs:
-      - say-hello
+      - build-push-docker-image
