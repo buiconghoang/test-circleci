@@ -30,17 +30,18 @@ jobs:
       - run:
           name: "show docker info"
           command: |
-            echo ${DOCKER_PWD}
-            echo ${DOCKER_USER_NAME}
+            echo "branch name: " $CIRCLE_BRANCH ", hash: "$CIRCLE_SHA1
+            echo $DOCKER_PWD
+            echo $DOCKER_USER_NAME
 
       - run:
           name: "Build docker"
-          command: docker build -t hbc08/bch:v222 .
+          command: docker build -t hbc08/bch:$CIRCLE_SHA1 .
       - run:
           name: "push docker"
           command: |
             echo "$DOCKER_PWD" | docker login -u "$DOCKER_USER_NAME" --password-stdin
-            docker push hbc08/bch:v222
+            docker push hbc08/bch:$CIRCLE_SHA1
 
 
 # Orchestrate jobs using workflows
