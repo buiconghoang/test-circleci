@@ -83,7 +83,7 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls /my_workspace/child_folder/
+          command: ls /my_workspace_inxxxx/child_folder/
 
 
   build-push-docker-image:
