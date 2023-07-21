@@ -10,7 +10,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     environment:
-        TEST_RESULT_WORKSPACE: "/myworkspace_hello_world"
+        TEST_RESULT_WORKSPACE: "TEST_RESULT_WORKSPACE_Folder"
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
@@ -29,7 +29,7 @@ jobs:
           name: list file
           command: ls
       - run: 
-          name: "create my_workspace"
+          name: "create ${TEST_RESULT_WORKSPACE}"
           command: mkdir -p $TEST_RESULT_WORKSPACE
 
       - run:
