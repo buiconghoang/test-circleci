@@ -55,6 +55,7 @@ jobs:
           command: |
               cd my_workspace
               ls
+              echo "child folder files: \n"
               cd child_folder
               ls
             
