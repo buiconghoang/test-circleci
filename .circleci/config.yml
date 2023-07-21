@@ -58,7 +58,7 @@ jobs:
       - run:
           name: list file in my workspace
           command: |
-              cd my_workspace
+              cd $TEST_RESULT_WORKSPACE
               ls
               echo "child folder files: \n"
               cd child_folder
