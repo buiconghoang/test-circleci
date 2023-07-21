@@ -9,6 +9,8 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#executor-job
     docker:
       - image: cimg/base:stable
+    environment:
+        TEST_RESULT_WORKSPACE: "/myworkspace_hello_world"
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
@@ -16,6 +18,9 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run:
+          name: "echo env TEST_RESULT_WORKSPACE"
+          command: echo $TEST_RESULT_WORKSPACE
      
       - run:
           name: Print Current Working Directory and list file
@@ -25,7 +30,7 @@ jobs:
           command: ls
       - run: 
           name: "create my_workspace"
-          command: mkdir -p my_workspace
+          command: mkdir -p $TEST_RESULT_WORKSPACE
 
       - run:
           name: Print Current Working Directory and list file
@@ -36,12 +41,12 @@ jobs:
       - run: 
           name: "create child folder"
           command: |
-            cd my_workspace
+            cd $TEST_RESULT_WORKSPACE
             ls
             mkdir -p child_folder
       - run:
           name: "create file" 
-          command: echo "Hello, world!" > my_workspace/child_folder/echo-output.txt
+          command: echo "Hello, world!" > ${TEST_RESULT_WORKSPACE}/child_folder/echo-output.txt
 
       - run:
           name: Print Current Working Directory and list file
@@ -62,7 +67,7 @@ jobs:
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
-          root: my_workspace
+          root: $TEST_RESULT_WORKSPACE
           # Must be relative path from root
           paths:
             - child_folder/
