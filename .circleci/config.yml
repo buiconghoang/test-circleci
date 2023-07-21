@@ -47,7 +47,7 @@ jobs:
       - run:
           name: list file in my workspace
           command: |
-              cd my_workspace \
+              cd my_workspace
               ls
             
       - persist_to_workspace:
