@@ -73,7 +73,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp
+          at: /my_workspace/child_folder
       - run:
           name: Print Current Working Directory and list file
           command: pwd
