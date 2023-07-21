@@ -35,7 +35,7 @@ jobs:
           command: ls
       - run:
           name: "create file" 
-          command: echo "Hello, world!" > ~/my_workspace/echo-output.txt
+          command: echo "Hello, world!" > my_workspace/echo-output.txt
 
       - run:
           name: Print Current Working Directory and list file
