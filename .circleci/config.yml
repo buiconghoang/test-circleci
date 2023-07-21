@@ -13,6 +13,7 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
+      
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
@@ -26,6 +27,7 @@ jobs:
       - run: 
           name: "create my_workspace"
           command: mkdir -p my_workspace
+      - checkout
       - run: 
           name: "create child folder"
           command: cd my_workspace | mkdir -p child_folder
