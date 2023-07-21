@@ -33,9 +33,15 @@ jobs:
       - run:
           name: list file
           command: ls
+      - run: 
+          name: "create child folder"
+          command: |
+            cd my_workspace
+            ls
+            mkdir -p child_folder
       - run:
           name: "create file" 
-          command: echo "Hello, world!" > my_workspace/echo-output.txt
+          command: echo "Hello, world!" > my_workspace/child_folder/echo-output.txt
 
       - run:
           name: Print Current Working Directory and list file
@@ -48,6 +54,8 @@ jobs:
           name: list file in my workspace
           command: |
               cd my_workspace
+              ls
+              cd child_folder
               ls
             
       - persist_to_workspace:
