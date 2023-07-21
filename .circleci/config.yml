@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /my_workspace_inxxxx
+          at: /tmp
       
       - run:   
           name: Print Current Working Directory and list file
@@ -90,7 +90,7 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls /my_workspace_inxxxx/child_folder/
+          command: ls /tmp/$TEST_RESULT_WORKSPACE_Folder/
 
 
   build-push-docker-image:
