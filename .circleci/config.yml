@@ -65,7 +65,7 @@ jobs:
           root: my_workspace
           # Must be relative path from root
           paths:
-            - child_folder
+            - child_folder/
 
   test-attach-workflow-job:
     docker:
@@ -74,7 +74,8 @@ jobs:
       - checkout
       - attach_workspace:
           at: /my_workspace/child_folder
-      - run:
+      
+      - run:   
           name: Print Current Working Directory and list file
           command: pwd
       - run:
@@ -82,7 +83,7 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls /my_workspace/child_folder
+          command: ls /my_workspace/child_folder/
 
 
   build-push-docker-image:
