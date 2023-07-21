@@ -29,7 +29,7 @@ jobs:
       - run: 
           name: "create child folder"
           command: cd my_workspace | mkdir -p child_folder
-      - run: echo "Hello, world!" > my_workspace/child_folder/echo-output.txt
+      - run: echo "Hello, world!" > ~/my_workspace/child_folder/echo-output.txt
 
       - run:
           name: Print Current Working Directory and list file
