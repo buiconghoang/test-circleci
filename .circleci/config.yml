@@ -13,10 +13,51 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - checkout
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+      - run: 
+          name: "create my_workspace"
+          command: mkdir -p my_workspace
+      - run:
+          name: Print Current Working Directory and list file
+          command: pwd
+      - run:
+          name: list file
+          command: ls
+
+      - run: 
+          name: "create child folder"
+          command: cd my_workspace | mkdir -p child_folder
+      - run: echo "Hello, world!" > my_workspace/child_folder/echo-output.txt
+
+      - run:
+          name: Print Current Working Directory and list file
+          command: pwd
+      - run:
+          name: list file
+          command: ls
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: my_workspace
+          # Must be relative path from root
+          paths:
+            - echo-output
+
+  test-attach-workflow-job:
+    docker:
+      - image: sonarsource/sonar-scanner-cli:latest
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Print Current Working Directory and list file
+          command: pwd
+      - run:
+          name: list file
+          command: ls
 
 
   build-push-docker-image:
@@ -44,9 +85,19 @@ jobs:
             docker push hbc08/bch:$CIRCLE_SHA1
 
 
+
+
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  push-image-workflow:
+  test-attach-workflow:
     jobs:
-      - build-push-docker-image
+      - say-hello
+      - test-attach-workflow-job:
+          requires:
+            - say-hello
+        
+
+  # push-image-workflow:
+  #   jobs:
+  #     - build-push-docker-image
