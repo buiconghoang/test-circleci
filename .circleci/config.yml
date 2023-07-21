@@ -64,7 +64,7 @@ jobs:
           root: my_workspace
           # Must be relative path from root
           paths:
-            - echo-output
+            - child_folder
 
   test-attach-workflow-job:
     docker:
