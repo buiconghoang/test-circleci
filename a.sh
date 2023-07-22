@@ -12,4 +12,4 @@ echo "TEST_RESULT_DIR: ${TEST_RESULT_DIR}"
 
 echo "TEST_RESULT_WORKSPACE data: ${TEST_RESULT_WORKSPACE}"
 
-echo $(cat ${TEST_RESULT_WORKSPACE}/a.txt)
+echo $(cat /ttt/${TEST_RESULT_WORKSPACE}/a.txt)

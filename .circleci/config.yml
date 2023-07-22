@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: .
+          at: /ttt
       
       - run:   
           name: Print Current Working Directory and list file
@@ -90,7 +90,7 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls TEST_RESULT_WORKSPACE_Folder
+          command: ls /ttt/TEST_RESULT_WORKSPACE_Folder
       - run:
           name: run a.sh file
           command: sh a.sh 
