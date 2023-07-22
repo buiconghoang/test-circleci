@@ -70,7 +70,7 @@ jobs:
           root: tmp
           # Must be relative path from root
           paths:
-            - TEST_RESULT_WORKSPACE_Folder/
+            - TEST_RESULT_WORKSPACE_Folder
 
   test-attach-workflow-job:
     docker:
