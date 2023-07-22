@@ -90,7 +90,7 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls /tmp/$TEST_RESULT_WORKSPACE_Folder/
+          command: ls /tmp/${TEST_RESULT_WORKSPACE_Folder}/
 
 
   build-push-docker-image:
