@@ -46,7 +46,7 @@ jobs:
             mkdir -p $TEST_RESULT_WORKSPACE
       - run:
           name: "create file" 
-          command: echo "Hello, world!" > tmp/$TEST_RESULT_WORKSPACE/echo-output.txt
+          command: echo "Hello, world! a.txt file" > tmp/$TEST_RESULT_WORKSPACE/a.txt
 
       - run:
           name: Print Current Working Directory and list file
@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp
+          at: /my-attach-workspace
       
       - run:   
           name: Print Current Working Directory and list file
@@ -90,7 +90,11 @@ jobs:
           command: ls
       - run:
           name: List files in the workspace
-          command: ls /tmp/${TEST_RESULT_WORKSPACE_Folder}/
+          command: ls /my-attach-workspace/TEST_RESULT_WORKSPACE_Folder/
+      - run:
+          name: run a.sh file
+          command: sh a.sh 
+
 
 
   build-push-docker-image:

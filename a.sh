@@ -1,0 +1,15 @@
+set -e 
+
+
+echo "hello world"
+
+TEST_RESULTS_TEST="/tmp111/hello"
+echo "TEST_RESULTS_TEST ${TEST_RESULTS_TEST}"
+
+
+TEST_RESULT_DIR="${TEST_RESULTS_TEST:-./tmp}"
+echo "TEST_RESULT_DIR: ${TEST_RESULT_DIR}"
+
+echo "TEST_RESULT_WORKSPACE data: ${TEST_RESULT_WORKSPACE}"
+
+echo $(cat ${TEST_RESULT_WORKSPACE}/a.txt)
