@@ -46,7 +46,7 @@ jobs:
             mkdir -p $TEST_RESULT_WORKSPACE
       - run:
           name: "create file" 
-          command: echo "Hello, world! a.txt file" > tmp/$TEST_RESULT_WORKSPACE/a.txt
+          command: echo "Hello, world! a.txt file bbb" > tmp/$TEST_RESULT_WORKSPACE/a.txt
 
       - run:
           name: Print Current Working Directory and list file
@@ -88,6 +88,9 @@ jobs:
       - run:
           name: list file
           command: ls
+      - run:
+          name: List files in the woprksapce
+          command: ls /ttt
       - run:
           name: List files in the workspace
           command: ls /ttt/TEST_RESULT_WORKSPACE_Folder
